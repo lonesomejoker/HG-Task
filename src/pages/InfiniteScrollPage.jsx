@@ -26,7 +26,7 @@ const InfiniteScrollPage = () => {
       />
 
       {/*Filter & Search*/}
-      <div className="flex gap-3.5 items-center justify-end w-[40%] ml-auto mt-[2.5rem] mb-[1.5rem]">
+      <div className="flex gap-3.5 items-center justify-end w-full md:w-[60%] lg:w-[40%] ml-auto mt-[2.5rem] mb-[1.5rem]">
         <div className="relative flex-1">
           <input
             type="text"
@@ -49,15 +49,15 @@ const InfiniteScrollPage = () => {
       </div>
 
       {/* User Cards */}
-      <section className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <section className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6">
         {filteredProfiles?.map((user, idx) => (
           <section
             key={idx}
-            className="items-center flex flex-col lg:flex-row gap-5 justify-between overflow-clip hover:-translate-y-1.5 transition-all duration-300 border border-slate-100 px-6 md:px-8 lg:px-8 py-6 lg:py-8 bg-white rounded-xl shadow-md shadow-slate-200 hover:shadow-lg"
+            className=" items-start lg:items-center gap-4 flex flex-col lg:flex-row gap-6 justify-between overflow-clip hover:-translate-y-1.5 transition-all duration-300 border border-slate-100 px-4 md:px-8 lg:px-8 py-4 md:py-6 lg:py-8 bg-white rounded-xl shadow-md shadow-slate-200 hover:shadow-lg"
           >
-            <div className="mb-4 lg:w-[40%]">
+            <div className="mb-4 w-full lg:w-[40%] mx-auto">
               <img
-                className="rounded-full size-[8rem] object-cover mx-auto mb-3"
+                className="rounded-full size-[6rem] lg:size-[8rem] object-cover mx-auto mb-3"
                 src={user.picture?.medium}
                 alt="user"
               />
@@ -65,7 +65,7 @@ const InfiniteScrollPage = () => {
                 {user.name.first} {user.name.last}
               </h5>
             </div>
-            <div className="space-y-3.5 lg:flex-1">
+            <div className="space-y-3.5 w-full lg:w-auto lg:flex-1">
               <div className="border-b-2 border-gray-200 pb-3">
                 <p className="caption mb-1">Email:</p>
                 <h6 className="text-wrap">{user.email}</h6>

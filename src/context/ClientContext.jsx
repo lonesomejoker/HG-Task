@@ -22,6 +22,7 @@ export const ClientProvider = ({ children }) => {
   const handleCancel = () => {
     setOpen(false);
   };
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
   const [profile, setProfile] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -72,6 +73,8 @@ export const ClientProvider = ({ children }) => {
         handleOk,
         handleCancel,
         confirmLoading,
+        isMobile,
+        setIsMobile,
         open,
         profile,
         loading,
