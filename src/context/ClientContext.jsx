@@ -40,7 +40,7 @@ export const ClientProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    fetchData(5);
+    fetchData(6);
   }, []);
 
   const handleInfiniteScroll = async () => {
