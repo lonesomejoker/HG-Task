@@ -32,7 +32,7 @@ export const querySlice = apiSlice.injectEndpoints({
     updateItem: builder.mutation({
       query: ({ url, data }) => ({
         url: `${url}`,
-        method: "PATCH",
+        method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: data,
       }),

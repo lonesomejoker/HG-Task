@@ -24,23 +24,23 @@ export const ClientProvider = ({ children }) => {
   };
 
   const [profile, setProfile] = useState([]);
-  const [viewable, setViewable] = useState(5);
   const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          `https://randomuser.me/api/?results=${viewable}`
-        );
-        setProfile((prev) => [...prev, ...response.data.results]);
-        setLoading(false);
-      } catch (error) {
-        message.error("Something went wrong while fetching users.");
-      }
-    };
 
-    fetchData();
-  }, [viewable]);
+  const fetchData = async (count) => {
+    try {
+      const response = await axios.get(
+        `https://randomuser.me/api/?results=${count}`
+      );
+      setProfile((prev) => [...prev, ...response.data.results]);
+      setLoading(false);
+    } catch (error) {
+      message.error("Something went wrong while fetching users.");
+    }
+  };
+
+  useEffect(() => {
+    fetchData(5);
+  }, []);
 
   const handleInfiniteScroll = async () => {
     try {
@@ -49,7 +49,7 @@ export const ClientProvider = ({ children }) => {
         document.documentElement.scrollHeight
       ) {
         setLoading(true);
-        setViewable((prev) => prev + 5);
+        fetchData(2);
       }
     } catch (error) {
       console.log(error);

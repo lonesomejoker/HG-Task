@@ -35,7 +35,8 @@ const Dashboard = () => {
   const dispatch = useDispatch();
   const { user_details, users } = useSelector((state) => state.users_slice);
 
-  //console.log("user slice:", user_details);
+  // console.log("user slice:", user_details);
+  console.log("user info:", users);
 
   const { showModal, handleOk, handleCancel, confirmLoading, open } =
     useClientContext();
@@ -131,7 +132,7 @@ const Dashboard = () => {
       dataIndex: "",
       key: "x",
       render: (_, record) => (
-        <div className="flex items-center gap-4 text-lg text-gray-600 justify-center">
+        <div className="flex items-center gap-3 text-lg text-gray-600 justify-center">
           <button
             onClick={() => handleUserDetails(record)}
             title="View"
@@ -210,18 +211,22 @@ const Dashboard = () => {
                   {user_details.name}
                 </h6>
               </div>
-              <div className="space-y-3.5 lg:flex-1">
-                <div className="border-b-2 border-gray-200 pb-3">
-                  <p className="caption mb-1">Email:</p>
-                  <p className="text-wrap font-heading">{user_details.email}</p>
+              <div className="space-y-2.5 lg:flex-1">
+                <div className="border-b-2 border-gray-200 pb-2">
+                  <p className="text-[12px] mb-0.5">Email:</p>
+                  <p className="text-wrap font-heading caption font-[550]">{user_details.email}</p>
                 </div>
-                <div className="border-b-2 border-gray-200 pb-3">
-                  <p className="caption mb-1">Company:</p>
-                  <p className=" font-heading">{user_details.company?.name}</p>
+                <div className="border-b-2 border-gray-200 pb-2">
+                  <p className="text-[12px] mb-0.5">Company:</p>
+                  <p className=" font-heading caption font-[550]">{user_details.company?.name}</p>
+                </div>
+                <div className="border-b-2 border-gray-200 pb-2">
+                  <p className="text-[12px] mb-0.5 ">Phone:</p>
+                  <p className="font-heading caption font-[550]">{user_details.phone}</p>
                 </div>
                 <div>
-                  <p className="caption mb-1">Phone:</p>
-                  <p className="font-heading">{user_details.phone}</p>
+                  <p className="text-[12px] mb-0.5">Website:</p>
+                  <p className="font-heading caption font-[550]">{user_details.website}</p>
                 </div>
               </div>
             </section>
@@ -267,10 +272,19 @@ const Dashboard = () => {
                 rules={[{ required: true, message: "Please input phone" }]}
               />
               <InputField
+                placeholder="Company"
                 name={["company", "name"]}
                 label="Company Name"
                 rules={[
                   { required: true, message: "Please input company name" },
+                ]}
+              />
+              <InputField
+                placeholder="Website Link"
+                name="website"
+                label="Website"
+                rules={[
+                  { required: false, message: "Please input website Link" },
                 ]}
               />
             </Form>
