@@ -32,11 +32,9 @@ const Dashboard = () => {
     error,
   } = useGetItemQuery({ url: "/users" });
   console.log("data:", usersData);
-  if (isLoading) return <p className=" text-center">Loading users...</p>;
-  if (error) return <p className=" text-center">Error loading users!</p>;
-
   const dispatch = useDispatch();
   const { user_details, users } = useSelector((state) => state.users_slice);
+
   //console.log("user slice:", user_details);
 
   const { showModal, handleOk, handleCancel, confirmLoading, open } =
@@ -45,13 +43,18 @@ const Dashboard = () => {
   const [editingUser, setEditingUser] = useState(null);
   const [form] = Form.useForm();
 
+  const [searchText, setSearchText] = useState("");
+
+  const [deleteItem] = useDeleteItemMutation();
+  const [postItem] = usePostItemMutation();
+  const [updateItem] = useUpdateItemMutation();
+
   useEffect(() => {
     if (usersData) {
       dispatch(setUsers(usersData));
     }
   }, [usersData]);
 
-  const [searchText, setSearchText] = useState("");
   const filteredUsers = useMemo(() => {
     if (!users || users.length === 0) return [];
 
@@ -62,14 +65,13 @@ const Dashboard = () => {
     );
   }, [searchText, users]);
 
+  if (isLoading) return <p className=" text-center">Loading users...</p>;
+  if (error) return <p className=" text-center">Error loading users!</p>;
+
   const handleUserDetails = (user) => {
     dispatch(userInfo(user));
     showModal();
   };
-
-  const [deleteItem] = useDeleteItemMutation();
-  const [postItem] = usePostItemMutation();
-  const [updateItem] = useUpdateItemMutation();
 
   const handleDelete = async (id) => {
     try {
