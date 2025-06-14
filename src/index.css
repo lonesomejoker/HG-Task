@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Sora:wght@100..800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-heading: "Manrope", sans-serif;
+  --font-body: "Sora", sans-serif;
+  --color-primary: #854ddc;
+  --color-primary-600: #683bab;
+}
+
+@layer base {
+  h1 {
+    @apply font-[700] text-[32px] sm:text-[34px] md:text-[38px] lg:text-[42px] text-[#000000d1] leading-[115%] md:leading-[110%] tracking-[2px] md:tracking-[1.8px];
+    font-family: var(--font-heading);
+  }
+
+  h3 {
+    @apply font-[700] text-[24px] md:text-[26px] lg:text-[28px] text-zinc-800 font-heading leading-[130%] md:leading-[120%] tracking-[1.5px] md:tracking-[1.4px];
+  }
+
+  h5 {
+    @apply font-[600] text-[18px] md:text-[20px] lg:text-[22px] text-zinc-800 font-heading leading-[115%] md:leading-[110%] tracking-[1px] md:tracking-[0.8px];
+  }
+
+  h6 {
+    @apply font-[600] text-[17px] lg:text-[18px] text-zinc-800 font-heading tracking-[0.7px] md:tracking-[0.5px] leading-[120%] md:leading-[115%];
+  }
+
+  p {
+    @apply font-[450] text-[15px] md:text-[16px] font-body leading-[165%] md:leading-[160%] tracking-[0.4px] md:tracking-[0px];
+  }
+
+  .caption {
+    @apply font-[450] text-[14px] text-[#000000a6] font-body leading-[165%] md:leading-[160%] tracking-[0px] md:tracking-[-0.2px];
+  }
+
+  .consistent {
+    @apply container mx-auto px-4 md:px-6 xl:px-8 2xl:px-10;
+  }
+
+  ul {
+    @apply font-normal text-[16px] md:text-[17px] font-body;
+  }
+
+  li {
+    @apply list-none;
+  }
+
+  .ant-table-thead>tr>th {
+    @apply font-heading uppercase tracking-[0.8px];
+  }
+
+  .ant-table-tbody>tr>td {
+    @apply font-body;
+  }
+}
